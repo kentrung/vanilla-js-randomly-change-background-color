@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vanilla JS: Random color</title>
+  <!-- bootstrap 4.5.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+  <style>
+    body {width: 100vw;height: 100vh;display: flex;align-items: center;justify-content: center;}
+  </style>
+</head>
+<body>
+  <button class="btn btn-primary">Thay đổi ngẫu nhiên màu nền</button>
+  <script>
+    let currentColor = 'transparent'
+    const listColors = ['red', 'orange', 'yellow', 'blue', 'green', 'cyan', 'violet']
+    const btnElement = document.querySelector('button')
+    const bodyElement = document.querySelector('body')
+
+    function getRandomColorExceptCurrentColor(previousColor) {
+      let listColorsFiltered = listColors.filter(color => color !== previousColor)
+      randomColor = listColorsFiltered[Math.floor(Math.random() * listColorsFiltered.length)]
+      currentColor = randomColor
+      return randomColor
+    }
+
+    btnElement.addEventListener('click', function() {
+      bodyElement.style.backgroundColor = getRandomColorExceptCurrentColor(currentColor)
+    })
+  </script>
+</body>
+</html>
